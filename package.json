@@ -1,0 +1,27 @@
+{
+  "name": "electron",
+  "version": "1.0.0",
+  "main": "main.js",
+  "scripts": {
+  "start": "electron ."
+}
+,
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/amine2004bekk/PROJECT.git"
+  },
+  "keywords": [
+    "electron",
+    "app"
+  ],
+  "author": "amine bekkaye",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/amine2004bekk/PROJECT/issues"
+  },
+  "homepage": "https://github.com/amine2004bekk/PROJECT#readme",
+  "description": "",
+  "devDependencies": {
+    "electron": "^37.3.1"
+  }
+}
