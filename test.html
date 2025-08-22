@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Upload Avatar</title>
+  <style>
+    body {
+      background: #0f172a;
+      color: white;
+      font-family: Arial, sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    .avatar-container {
+      position: relative;
+      width: 150px;
+      height: 150px;
+    }
+
+    .avatar {
+      width: 100%;
+      height: 100%;
+      border-radius: 50%;
+      background-color: #1f2937;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      overflow: hidden;
+      cursor: pointer;
+      border: 3px solid #4f46e5;
+      transition: 0.3s;
+    }
+
+    .avatar:hover {
+      opacity: 0.8;
+    }
+
+    .avatar img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .avatar svg {
+      width: 60px;
+      height: 60px;
+      color: #9ca3af;
+    }
+
+    input[type="file"] {
+      display: none;
+    }
+
+    .upload-btn {
+      position: absolute;
+      bottom: 10px;
+      right: 10px;
+      background: linear-gradient(to right, #4f46e5, #9333ea);
+      border-radius: 50%;
+      padding: 8px;
+      cursor: pointer;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .upload-btn svg {
+      width: 18px;
+      height: 18px;
+      color: white;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="avatar-container">
+    <!-- Zone avatar -->
+    <label for="file-upload" class="avatar" id="avatarPreview">
+      <!-- Icône utilisateur par défaut -->
+      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" 
+          d="M12 12c2.485 0 4.5-2.015 4.5-4.5S14.485 3 12 3 7.5 5.015 7.5 7.5 9.515 12 12 12zM4.5 21a8.99 8.99 0 0115 0" />
+      </svg>
+    </label>
+
+    <!-- Input caché -->
+    <input id="file-upload" type="file" accept="image/*">
+
+    <!-- Bouton upload -->
+    <label for="file-upload" class="upload-btn">
+      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" 
+          d="M12 4v16m8-8H4"/>
+      </svg>
+    </label>
+  </div>
+
+  <script>
+    const fileInput = document.getElementById('file-upload');
+    const avatarPreview = document.getElementById('avatarPreview');
+
+    fileInput.addEventListener('change', function(event) {
+      const file = event.target.files[0];
+      if (file) {
+        const reader = new FileReader();
+        reader.onload = function(e) {
+          avatarPreview.innerHTML = `<img src="${e.target.result}" alt="Avatar">`;
+        };
+        reader.readAsDataURL(file);
+      }
+    });
+  </script>
+
+</body>
+</html>

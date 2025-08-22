@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>About</title>
+  </head>
+  <body>
+    <h1>ℹ️ About Page</h1>
+    <p>This is the About page of our Electron app.</p>
+
+    <button onclick="goBack()">Go Back to Home</button>
+
+    <script>
+      function goBack() {
+        window.electronAPI.navigate('index.html');
+      }
+    </script>
+  </body>
+</html>

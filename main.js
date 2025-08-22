@@ -1,24 +1,22 @@
-const { app, BrowserWindow } = require('electron');
+// main.js
+const { app, BrowserWindow, ipcMain } = require('electron');
+const path = require('path');
 
-function createWindow() {
-  // Créer la fenêtre de l'application
-  const win = new BrowserWindow({
+let win;
+
+app.whenReady().then(() => {
+  win = new BrowserWindow({
     width: 800,
     height: 600,
     webPreferences: {
-      nodeIntegration: true,
-    },
-  });
-let winajouter = new BrowserWindow({
-    width: 800, 
-    height: 600,
-    webPreferences: {
-      nodeIntegration: true,
-    },
+      preload: path.join(__dirname, 'preload.js'),
+    }
   });
 
   win.loadFile('index.html');
-  winajouter.loadFile('ajouter_membr.html');
-}
+});
 
-app.whenReady().then(createWindow);
+// Listen from renderer to switch pages
+ipcMain.on('navigate', (event, page) => {
+  win.loadFile(page);
+});

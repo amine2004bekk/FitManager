@@ -2,114 +2,218 @@
 <html lang="fr">
 <head>
   <meta charset="UTF-8">
-  <title>Ajouter un membre | Salle de sport</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Créer un membre</title>
+  <link rel="stylesheet" href="avatar.css">
   <style>
     body {
+      background-color: #111827;
+      color: white;
       font-family: Arial, sans-serif;
-      background: #f4f6fb;
       margin: 0;
       padding: 20px;
     }
-    h2 { color: #333; }
-    .card {
-      background: #fff;
-      padding: 20px;
+
+    .container {
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    h1 {
+      font-size: 24px;
+      font-weight: bold;
       margin-bottom: 20px;
+    }
+
+    .card {
+      background: #1a1f2c;
       border-radius: 12px;
-      box-shadow: 0 4px 12px rgba(0,0,0,.1);
-      
+      padding: 20px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.4);
     }
-    label { display: block; margin-top: 12px; font-weight: bold; }
+
+    .form-group {
+      margin-bottom: 15px;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 6px;
+      color: #d1d5db;
+    }
+
     input, select {
-      width: 100%; padding: 10px; margin-top: 6px;
-      border: 1px solid #ccc; border-radius: 8px;
+      width: 100%;
+      padding: 10px;
+      border-radius: 10px;
+      border: none;
+      outline: none;
+      background: #1f2937;
+      color: white;
     }
-    button {
-      margin-top: 16px;
+
+    input:focus, select:focus {
+      border: 1px solid #6366f1;
+    }
+
+    .btn {
+      display: inline-block;
+      margin-top: 15px;
+      background: linear-gradient(to right, #3b82f6, #8b5cf6);
+      color: white;
+      font-weight: bold;
+      border: none;
       padding: 10px 16px;
-      background: linear-gradient(135deg, #7c3aed, #06b6d4);
-      color: white; border: none; border-radius: 8px;
-      cursor: pointer; font-weight: bold;
+      border-radius: 12px;
+      cursor: pointer;
+      transition: transform 0.2s;
     }
-    button:hover { opacity: 0.9; }
-    table {
-      width: 100%; border-collapse: collapse; margin-top: 20px;
+
+    .btn:hover {
+      transform: scale(1.05);
     }
-    th, td {
-      padding: 12px; border-bottom: 1px solid #ddd; text-align: left;
+
+    .success-message {
+      display: none;
+      margin-top: 15px;
+      padding: 10px;
+      background: #10b98133;
+      color: #10b981;
+      border-radius: 8px;
+      font-size: 14px;
     }
-    th { background: #7c3aed; color: white; }
+    #file {
+      margin-top: 10px;
+      padding: 10px;
+      background: #1f2937;
+      border-radius: 10px;
+      border: none;
+      outline: none;
+      color: white;
+      font-size: 14px;
+cursor: pointer;
+    }
+    /* .container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 20px;
+    } */
   </style>
 </head>
 <body>
+  <div class="container">
+    <button class="btn" onclick="history.back()"><i class="fa fa-arrow-left"></i> Retour</button>
+    <h1>➕ Créer un membre</h1>
+    
+  <div class="avatar-container">
+    <!-- Zone avatar -->
+    <label for="file-upload" class="avatar" id="avatarPreview">
+      <!-- Icône utilisateur par défaut -->
+      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" 
+          d="M12 12c2.485 0 4.5-2.015 4.5-4.5S14.485 3 12 3 7.5 5.015 7.5 7.5 9.515 12 12 12zM4.5 21a8.99 8.99 0 0115 0" />
+      </svg>
+    </label>
 
-  <div class="card">
-    <h2>Ajouter un membre</h2>
-    <form id="memberForm">
-      <label>Nom complet :</label>
-      <input type="text" id="nom" required>
+    <!-- Input caché -->
+    <input id="file-upload" type="file" accept="image/*">
 
-      <label>Téléphone :</label>
-      <input type="text" id="telephone" required>
-
-      <label>Type d’abonnement :</label>
-      <select id="abonnement" required>
-        <option value="Mensuel">Mensuel</option>
-        <option value="Trimestriel">Trimestriel</option>
-        <option value="Annuel">Annuel</option>
-      </select>
-
-      <label>Date d’échéance :</label>
-      <input type="date" id="echeance" required>
-
-      <button type="submit">Ajouter</button>
-    </form>
+    <!-- Bouton upload -->
+    <label for="file-upload" class="upload-btn">
+      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" 
+          d="M12 4v16m8-8H4"/>
+      </svg>
+    </label>
   </div>
+  <br>
+    <div class="card">
+      <form id="memberForm">
+        <div class="form-group">
+          <label for="name">Nom complet</label>
+          <input type="text" id="name" placeholder="Entrez le nom du membre" required>
+        </div>
+<div class="form-group">
+          <label for="name">numéro de carte nationall</label>
+          <input type="number" id="name" placeholder="Entrez le numéro de carte nationall" required>
+        </div>
+        <div class="form-group">
+          <label for="email">Adresse email</label>
+          <input type="email" id="email" placeholder="exemple@email.com" required>
+        </div>
 
-  <div class="card">
-    <h2>Liste des membres</h2>
-    <table>
-      <thead>
-        <tr>
-          <th>Nom</th>
-          <th>Téléphone</th>
-          <th>Abonnement</th>
-          <th>Échéance</th>
-        </tr>
-      </thead>
-      <tbody id="memberTable">
-        <!-- Les membres ajoutés apparaîtront ici -->
-      </tbody>
-    </table>
+        <div class="form-group">
+          <label for="phone">Téléphone</label>
+          <input type="text" id="phone" placeholder="0555 123 456" required>
+        </div>
+
+        <div class="form-group">
+          <label for="plan">Programme</label>
+          <select id="plan" required>
+            <option value="">-- Choisir un programme --</option>
+            <option value="CrossFit">CrossFit</option>
+            <option value="Yoga">Yoga</option>
+            <option value="HIIT">HIIT</option>
+            <option value="Zumba">Zumba</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="status">Statut</label>
+          <select id="status" required>
+            <option value="Active">Actif</option>
+            <option value="Inactive">Inactif</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="startDate">Date de début</label>
+          <input type="date" id="startDate" required>
+        </div>
+        <div class="form-group">
+          <label for="endDate">Date de fin</label>
+          <input type="date" id="endDate" required>
+        </div>
+        <div class="form-group">
+          <label for="file">photo de profil</label>
+          <input type="file" id="file" accept="image/*" required >
+        </div>
+        <button type="submit" class="btn">💾 Enregistrer</button>
+      </form>
+      <div class="success-message" id="successMessage">
+        ✅ Membre créé avec succès !
+      </div>
+    </div>
   </div>
 
   <script>
     const form = document.getElementById("memberForm");
-    const table = document.getElementById("memberTable");
+    const successMessage = document.getElementById("successMessage");
 
-    form.addEventListener("submit", function(e) {
-      e.preventDefault();
-
-      // Récupérer les valeurs
-      const nom = document.getElementById("nom").value;
-      const telephone = document.getElementById("telephone").value;
-      const abonnement = document.getElementById("abonnement").value;
-      const echeance = document.getElementById("echeance").value;
-
-      // Créer une nouvelle ligne
-      const row = document.createElement("tr");
-      row.innerHTML = `
-        <td>${nom}</td>
-        <td>${telephone}</td>
-        <td>${abonnement}</td>
-        <td>${echeance}</td>
-      `;
-      table.appendChild(row);
-
-      // Réinitialiser le formulaire
+    form.addEventListener("submit", function(event) {
+      event.preventDefault();
+      successMessage.style.display = "block";
       form.reset();
+      setTimeout(() => {
+        successMessage.style.display = "none";
+      }, 3000);
     });
   </script>
+  <!-- script for avatar upload -->
+   <script>
+    const fileInput = document.getElementById('file-upload');
+    const avatarPreview = document.getElementById('avatarPreview');
 
+    fileInput.addEventListener('change', function(event) {
+      const file = event.target.files[0];
+      if (file) {
+        const reader = new FileReader();
+        reader.onload = function(e) {
+          avatarPreview.innerHTML = `<img src="${e.target.result}" alt="Avatar">`;
+        };
+        reader.readAsDataURL(file);
+      }
+    });
+  </script>
 </body>
 </html>
